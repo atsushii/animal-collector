@@ -16,17 +16,19 @@ services:
       - PGHOST=animal-db
     ports:
       - 8003:8000
+    volumes:
+      - ./server:/usr/src/app
 
   animal-db:
     container_name: animal-db
     image: postgres:13-alpine
     environment:
-      POSTGRES_USER=animal
-      POSTGRES_PASSWORD=animal-collector@8392
+      - POSTGRES_USER=animal
+      - POSTGRES_PASSWORD=animal-collector@8392
     expose:
       - 5432
     volumes:
       - animal-db:/var/lib/postgresql/data
 
 volumes:
-  animal-db
+  animal-db:

@@ -2,32 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78a8a8c5-4d8b-4ec5-bc6d-3f9c12866387" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/animal-collector.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/R_User_Library.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/Pipfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/Pipfile.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/animalCollection/animalCollection/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/animalCollection/animalCollection/asgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/animalCollection/animalCollection/settings.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/animalCollection/animalCollection/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/animalCollection/animalCollection/wsgi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/animalCollection/db.sqlite3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/animalCollection/manage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/animalCollection/user/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/animalCollection/user/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/animalCollection/user/apps.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/animalCollection/user/migrations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/animalCollection/user/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/animalCollection/user/tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/animalCollection/user/views.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/animalCollection/animalCollection/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/animalCollection/animalCollection/asgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/animalCollection/animalCollection/settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/animalCollection/animalCollection/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/animalCollection/animalCollection/wsgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/animalCollection/db.sqlite3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/animalCollection/manage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/animalCollection/user/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/animalCollection/user/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/animalCollection/user/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/animalCollection/user/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/animalCollection/user/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/animalCollection/user/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/animalCollection/user/views.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,8 +29,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docker-compose.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="315">
+              <caret line="21" column="2" selection-start-line="21" selection-start-column="2" selection-end-line="21" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -50,7 +39,7 @@
         <entry file="file://$PROJECT_DIR$/server/Dockerfile">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
-              <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+              <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -65,10 +54,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+        <entry file="file://$PROJECT_DIR$/server/animalCollector/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="987">
-              <caret line="146" column="5" selection-start-line="146" selection-start-column="5" selection-end-line="146" selection-end-column="5" />
+            <state relative-caret-position="747">
+              <caret line="86" column="43" lean-forward="true" selection-start-line="86" selection-start-column="43" selection-end-line="86" selection-end-column="43" />
+              <folding>
+                <element signature="e#316#340#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -81,11 +73,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/docker-compose.yml" />
         <option value="$PROJECT_DIR$/server/.dockerignore" />
         <option value="$PROJECT_DIR$/server/Dockerfile" />
         <option value="$PROJECT_DIR$/server/requirements.txt" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/docker-compose.yml" />
+        <option value="$PROJECT_DIR$/server/animalCollector/settings.py" />
       </list>
     </option>
   </component>
@@ -127,6 +120,12 @@
               <item name="animal-collector" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="animal-collector" type="b2602c69:ProjectViewProjectNode" />
+              <item name="animal-collector" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="animalCollector" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -163,12 +162,12 @@
       <option name="presentableId" value="Default" />
       <updated>1615152525446</updated>
       <workItem from="1615152531943" duration="962000" />
-      <workItem from="1615153552549" duration="574000" />
+      <workItem from="1615153552549" duration="1902000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1536000" />
+    <option name="totallyTimeSpent" value="2864000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-33" y="-1080" width="1920" height="1080" extended-state="0" />
@@ -210,17 +209,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="895">
+          <caret line="146" column="5" selection-start-line="146" selection-start-column="5" selection-end-line="146" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/animalCollection/animalCollection/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="38" column="33" lean-forward="true" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/docker-compose.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="315">
+          <caret line="21" column="2" selection-start-line="21" selection-start-column="2" selection-end-line="21" selection-end-column="2" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/Dockerfile">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
-          <caret line="15" column="7" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
         </state>
       </provider>
     </entry>
@@ -231,10 +244,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/../anaconda3/lib/python3.7/os.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/animalCollector/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="987">
-          <caret line="146" column="5" selection-start-line="146" selection-start-column="5" selection-end-line="146" selection-end-column="5" />
+        <state relative-caret-position="747">
+          <caret line="86" column="43" lean-forward="true" selection-start-line="86" selection-start-column="43" selection-end-line="86" selection-end-column="43" />
+          <folding>
+            <element signature="e#316#340#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
