@@ -34,3 +34,24 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+
+class Animal(models.Model):
+    animal_name = models.CharField(max_length=255, unique=True)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.animal_name
+
+
+class UserAnimal(models.Model):
+    users = models.ManyToManyField(User)
+    animals = models.ManyToManyField(Animal)
+    picture_url = models.URLField(max_length=200)
+    x_coordinate = models.FloatField()
+    y_coordinate = models.FloatField()
+
+    def __str__(self):
+        return self.users
+
+
