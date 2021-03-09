@@ -50,6 +50,7 @@ class UserAnimal(models.Model):
     picture_url = models.URLField(max_length=200)
     x_coordinate = models.FloatField()
     y_coordinate = models.FloatField()
+    created_date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.users
