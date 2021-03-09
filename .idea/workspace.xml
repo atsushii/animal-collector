@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78a8a8c5-4d8b-4ec5-bc6d-3f9c12866387" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/core/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/core/admin.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -54,8 +53,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/server/core/admin.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="600">
-                  <caret line="40" column="37" selection-start-line="40" selection-start-column="37" selection-end-line="40" selection-end-column="37" />
+                <state relative-caret-position="375">
+                  <caret line="25" selection-start-line="25" selection-end-line="25" />
                 </state>
               </provider>
             </entry>
@@ -231,12 +230,12 @@
       <workItem from="1615153552549" duration="14686000" />
       <workItem from="1615230581372" duration="50000" />
       <workItem from="1615244603426" duration="4623000" />
-      <workItem from="1615327666195" duration="689000" />
+      <workItem from="1615327666195" duration="1344000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21010000" />
+    <option name="totallyTimeSpent" value="21665000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-33" y="-1080" width="1920" height="1080" extended-state="0" />
@@ -417,8 +416,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/core/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="40" column="37" selection-start-line="40" selection-start-column="37" selection-end-line="40" selection-end-column="37" />
+        <state relative-caret-position="375">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
         </state>
       </provider>
     </entry>

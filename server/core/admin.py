@@ -21,29 +21,5 @@ class UserAdmin(BaseUserAdmin):
         }),
     )
 
-
-@admin.register(Animal)
-class AnimalAdmin(admin.ModelAdmin):
-    fields = (
-        'id', 'animal_name', 'description',
-    )
-    list_display = (
-        'id', 'animal_name', 'description',
-    )
-    readonly_fields = (
-        'id',
-    )
-
-@admin.register(UserAnimal)
-class UserAnimalAdmin(admin.ModelAdmin):
-    fields = (
-        'id', 'users', 'animals', 'picture_url',
-        'x_coordinate', 'y_coordinate', 'created_date'
-    )
-    list_display = (
-        'id', 'picture_url',
-        'x_coordinate', 'y_coordinate', 'created_date'
-    )
-    readonly_fields = (
-        'id', 'created_date'
-    )
+admin.site.register(Animal)
+admin.site.register(UserAnimal)
