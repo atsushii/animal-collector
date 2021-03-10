@@ -9,5 +9,5 @@ from animal.serializers import \
 
 
 class AnimalView(generics.CreateAPIView):
-    queryset = AnimalSerializer.objects.all()
+    queryset = Animal.objects.all()
     serializer_class = AnimalSerializer
