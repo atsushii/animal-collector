@@ -30,3 +30,6 @@ class UserAnimalSerializer(serializers.ModelSerializer):
             'animals', 'users'
         )
         read_only_fields = ('id',)
+
+class AnimalDetailSerializer(UserAnimalSerializer):
+    animals = AnimalSerializer(many=True, read_only=True)
