@@ -1,3 +1,13 @@
-from django.shortcuts import render
+from rest_framework import generics
 
-# Create your views here.
+from core.models import Animal, UserAnimal, User
+
+from animal.serializers import \
+    AnimalSerializer, \
+    UserAnimalSerializer,\
+    AnimalDetailSerializer
+
+
+class AnimalView(generics.CreateAPIView):
+    queryset = AnimalSerializer.objects.all()
+    serializer_class = AnimalSerializer
