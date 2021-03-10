@@ -11,3 +11,8 @@ from animal.serializers import \
 class AnimalView(generics.CreateAPIView):
     queryset = Animal.objects.all()
     serializer_class = AnimalSerializer
+
+
+class AnimalDetail(generics.RetrieveAPIView):
+    queryset = Animal.objects.all()
+    serializer_class = AnimalDetailSerializer
