@@ -37,7 +37,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 
 class Animal(models.Model):
-    animal_name = models.CharField(max_length=255, unique=True)
+    animal_name = models.CharField(max_length=255)
     description = models.TextField()
 
     def __str__(self):
