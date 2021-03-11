@@ -5,6 +5,6 @@ from animal import views
 app_name = 'animal'
 
 urlpatterns = [
-    path('register/', views.AnimalView.as_view(), name='animal_register'),
+    path('register/', views.AnimalRegisterView.as_view(), name='animal_register'),
     path('detail/<int:pk>', views.AnimalDetail.as_view(), name='animal_detail'),
 ]
