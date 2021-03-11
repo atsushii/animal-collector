@@ -1,5 +1,5 @@
 from django.contrib.auth import get_user_model
-from rest_framework import generics
+from rest_framework import generics, permissions
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 from .serializers import UserSerializer, UserLoginSerializer, UserAnimalSerializer
@@ -18,7 +18,7 @@ class LoginView(TokenObtainPairView):
 class UserAnimalRegister(generics.CreateAPIView):
     queryset = UserAnimal.objects.all()
     serializer_class = UserAnimalSerializer
-
+    permission_classes = [permissions.IsAuthenticated]
 
 class UserAnimalRetrieveView(generics.RetrieveAPIView):
     queryset = UserAnimal.objects.all()

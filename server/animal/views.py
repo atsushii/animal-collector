@@ -18,16 +18,4 @@ class AnimalRegisterView(generics.CreateAPIView):
 class AnimalDetail(generics.RetrieveAPIView):
     queryset = Animal.objects.all()
     serializer_class = AnimalDetailSerializer
-    permission_classes = (IsAuthenticated,)
-
-    def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
-
-
-class UserAnimalView(generics.RetrieveAPIView):
-    queryset = UserAnimal.objects.all()
-    serializer_class = UserAnimalSerializer
-
-
-
 
