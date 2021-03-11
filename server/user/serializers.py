@@ -2,6 +2,8 @@ from django.contrib.auth import get_user_model, authenticate
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
+from core.models import Animal, UserAnimal
+
 
 class UserSerializer(serializers.ModelSerializer):
     password1 = serializers.CharField(write_only=True)
@@ -39,3 +41,24 @@ class UserLoginSerializer(TokenObtainPairSerializer):
             if key != 'id':
                 token[key] = value
         return token
+
+
+class UserAnimalSerializer(serializers.ModelSerializer):
+    animals = serializers.PrimaryKeyRelatedField(
+        many=True,
+        queryset=Animal.objects.all()
+    )
+
+    users = serializers.PrimaryKeyRelatedField(
+        many=True,
+        queryset=get_user_model().objects.all()
+    )
+
+    class Meta:
+        model = UserAnimal
+        fields = (
+            'id', 'picture_url', 'x_coordinate',
+            'y_coordinate', 'created_date',
+            'animals', 'users'
+        )
+        read_only_fields = ('id',)
