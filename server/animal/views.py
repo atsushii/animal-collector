@@ -1,5 +1,5 @@
 from rest_framework import generics, viewsets
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticated
 
 from core.models import Animal, UserAnimal, User
 
@@ -11,14 +11,17 @@ from animal.serializers import \
 
 class AnimalRegisterView(generics.CreateAPIView):
 
-    permission_classes = (IsAuthenticatedOrReadOnly,)
     queryset = Animal.objects.all()
     serializer_class = AnimalSerializer
 
 
 class AnimalDetail(generics.RetrieveAPIView):
-    permission_classes = (IsAuthenticatedOrReadOnly,)
     queryset = Animal.objects.all()
     serializer_class = AnimalDetailSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
 
 
