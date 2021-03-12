@@ -31,7 +31,7 @@ class UserSerializer(serializers.ModelSerializer):
         read_only_fields = ('id',)
 
 
-class UserLoginSerializer(TokenObtainPairSerializer):
+class LoginSerializer(TokenObtainPairSerializer):
 
     @classmethod
     def get_token(cls, user):
@@ -40,6 +40,7 @@ class UserLoginSerializer(TokenObtainPairSerializer):
         for key, value in user_data.items():
             if key != 'id':
                 token[key] = value
+        print(user_data)
         return token
 
 

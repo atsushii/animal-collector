@@ -3,7 +3,7 @@ from rest_framework import generics, permissions
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 
-from .serializers import UserSerializer, UserLoginSerializer, UserAnimalSerializer
+from .serializers import UserSerializer, LoginSerializer, UserAnimalSerializer
 from core.models import UserAnimal
 
 
@@ -13,7 +13,7 @@ class SignUpView(generics.CreateAPIView):
 
 
 class LoginView(TokenObtainPairView):
-    serializer_class = UserLoginSerializer
+    serializer_class = LoginSerializer
 
 
 class UserAnimalRegister(generics.CreateAPIView):
@@ -21,12 +21,14 @@ class UserAnimalRegister(generics.CreateAPIView):
     queryset = UserAnimal.objects.all()
     serializer_class = UserAnimalSerializer
 
+
 class UserManager(generics.RetrieveAPIView):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class =UserSerializer
 
     def get_object(self):
         return self.request.user
+
 
 class UserAnimalRetrieveView(generics.RetrieveAPIView):
     permission_classes = [permissions.IsAuthenticated]
