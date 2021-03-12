@@ -21,6 +21,9 @@ class AnimalRegisterView(generics.CreateAPIView):
             user=self.request.user
         )
 
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
 
 class AnimalDetail(generics.RetrieveAPIView):
     queryset = Animal.objects.all()
