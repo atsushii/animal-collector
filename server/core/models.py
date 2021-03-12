@@ -52,7 +52,6 @@ class UserAnimal(models.Model):
     y_coordinate = models.FloatField()
     created_date = models.DateTimeField(default=timezone.now)
 
-    def __str__(self):
-        return self.users
-
+def __str__(self):
+    return self.id
 

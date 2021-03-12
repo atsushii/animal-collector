@@ -5,7 +5,6 @@ from core.models import Animal, UserAnimal, User
 
 from animal.serializers import \
     AnimalSerializer, \
-    UserAnimalSerializer,\
     AnimalDetailSerializer
 
 
