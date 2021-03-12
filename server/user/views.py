@@ -17,11 +17,19 @@ class LoginView(TokenObtainPairView):
 
 
 class UserAnimalRegister(generics.CreateAPIView):
+    permission_classes = [permissions.IsAuthenticated]
     queryset = UserAnimal.objects.all()
     serializer_class = UserAnimalSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
+class UserManager(generics.RetrieveAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    serializer_class =UserSerializer
+
+    def get_object(self):
+        return self.request.user
 
 class UserAnimalRetrieveView(generics.RetrieveAPIView):
+    permission_classes = [permissions.IsAuthenticated]
     queryset = UserAnimal.objects.all()
     serializer_class = UserAnimalSerializer
+
