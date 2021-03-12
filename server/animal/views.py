@@ -13,9 +13,22 @@ class AnimalRegisterView(generics.CreateAPIView):
 
     queryset = Animal.objects.all()
     serializer_class = AnimalSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        queryset = self.queryset
+        return queryset.filter(
+            user=self.request.user
+        )
 
 
 class AnimalDetail(generics.RetrieveAPIView):
     queryset = Animal.objects.all()
     serializer_class = AnimalDetailSerializer
+    permission_classes = [IsAuthenticated]
 
+    def get_queryset(self):
+        queryset = self.queryset
+        return queryset.filter(
+            user=self.request.user
+        )
