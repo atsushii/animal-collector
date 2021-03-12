@@ -58,6 +58,6 @@ class UserAnimal(models.Model):
     y_coordinate = models.FloatField()
     created_date = models.DateTimeField(default=timezone.now)
 
-def __str__(self):
+def __object__(self):
     return self.id
 
