@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
 from django.utils import timezone
 
+from django.conf import settings
+
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **kwargs):
@@ -45,7 +47,11 @@ class Animal(models.Model):
 
 
 class UserAnimal(models.Model):
-    users = models.ManyToManyField(User)
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        default=3
+    )
     animals = models.ManyToManyField(Animal)
     picture_url = models.URLField(max_length=200)
     x_coordinate = models.FloatField()

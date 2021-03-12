@@ -21,6 +21,9 @@ class UserAnimalRegister(generics.CreateAPIView):
     queryset = UserAnimal.objects.all()
     serializer_class = UserAnimalSerializer
 
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
 
 class UserManager(generics.RetrieveAPIView):
     permission_classes = [permissions.IsAuthenticated]

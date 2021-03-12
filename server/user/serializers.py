@@ -50,16 +50,12 @@ class UserAnimalSerializer(serializers.ModelSerializer):
         queryset=Animal.objects.all()
     )
 
-    users = serializers.PrimaryKeyRelatedField(
-        many=True,
-        queryset=get_user_model().objects.all()
-    )
 
     class Meta:
         model = UserAnimal
         fields = (
             'id', 'picture_url', 'x_coordinate',
             'y_coordinate', 'created_date',
-            'animals', 'users'
+            'animals'
         )
         read_only_fields = ('id',)
