@@ -38,3 +38,10 @@ class UserAnimalRetrieveView(generics.RetrieveAPIView):
     queryset = UserAnimal.objects.all()
     serializer_class = UserAnimalSerializer
 
+    def get_queryset(self):
+        queryset = self.queryset
+        return queryset.filter(
+            user=self.request.user
+        )
+
+

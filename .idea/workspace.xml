@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78a8a8c5-4d8b-4ec5-bc6d-3f9c12866387" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/animal/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/animal/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/core/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/core/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/user/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/server/user/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/animal/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" selection-start-line="15" selection-end-line="15" />
+            <state>
+              <caret column="53" lean-forward="true" selection-start-column="53" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -68,11 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/user/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="18" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="18" />
+            <state relative-caret-position="135">
+              <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -80,8 +79,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/user/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+            <state>
+              <caret column="46" lean-forward="true" selection-start-column="46" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -109,15 +108,15 @@
         <option value="$PROJECT_DIR$/docker-compose.yml" />
         <option value="$PROJECT_DIR$/server/animalCollector/urls.py" />
         <option value="$PROJECT_DIR$/server/animal/urls.py" />
-        <option value="$PROJECT_DIR$/server/user/urls.py" />
         <option value="$PROJECT_DIR$/server/animalCollector/settings.py" />
-        <option value="$PROJECT_DIR$/server/user/views.py" />
         <option value="$PROJECT_DIR$/server/animal/serializers.py" />
         <option value="$PROJECT_DIR$/server/user/serializers.py" />
         <option value="$PROJECT_DIR$/server/core/migrations/0005_auto_20210312_2314.py" />
         <option value="$PROJECT_DIR$/server/core/admin.py" />
         <option value="$PROJECT_DIR$/server/core/models.py" />
         <option value="$PROJECT_DIR$/server/animal/views.py" />
+        <option value="$PROJECT_DIR$/server/user/views.py" />
+        <option value="$PROJECT_DIR$/server/user/urls.py" />
       </list>
     </option>
   </component>
@@ -223,12 +222,12 @@
       <workItem from="1615244603426" duration="4623000" />
       <workItem from="1615327666195" duration="10654000" />
       <workItem from="1615400002530" duration="7367000" />
-      <workItem from="1615506798340" duration="11189000" />
+      <workItem from="1615506798340" duration="11416000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49531000" />
+    <option name="totallyTimeSpent" value="49758000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-33" y="-1080" width="1920" height="1080" extended-state="0" />
@@ -395,13 +394,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/user/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="18" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/animal/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -433,20 +425,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/animal/serializers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="46" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/user/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/user/serializers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3">
@@ -454,10 +432,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server/animal/serializers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="46" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server/animal/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        <state>
+          <caret column="53" lean-forward="true" selection-start-column="53" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/user/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="46" lean-forward="true" selection-start-column="46" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/user/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
         </state>
       </provider>
     </entry>

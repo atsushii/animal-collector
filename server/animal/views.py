@@ -14,6 +14,7 @@ class AnimalRegisterView(generics.CreateAPIView):
     queryset = Animal.objects.all()
     serializer_class = AnimalSerializer
 
+
 class AnimalDetail(generics.RetrieveAPIView):
     permission_classes = [permissions.IsAuthenticated]
     queryset = Animal.objects.all()
