@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from core.models import Animal, UserAnimal, User
+from user.serializers import UserAnimalSerializer
 
 
 class AnimalSerializer(serializers.ModelSerializer):
@@ -18,14 +19,4 @@ class AnimalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Animal
         fields = '__all__'
-        read_only_fields = ('id',)
-
-
-class AnimalDetailSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Animal
-        fields = (
-            'id', 'animal_name', 'description'
-        )
         read_only_fields = ('id',)

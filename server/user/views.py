@@ -43,4 +43,3 @@ class UserAnimalRetrieveView(generics.ListAPIView):
             user=self.request.user
         )
 
-
