@@ -33,24 +33,13 @@ class UserManager(generics.RetrieveAPIView):
         return self.request.user
 
 
-class UserAnimalRetrieveView(generics.RetrieveAPIView):
+class UserAnimalRetrieveView(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
     queryset = UserAnimal.objects.all()
     serializer_class = UserAnimalSerializer
 
-    def _params_to_ints(self, qs):
-        return [int(str_id) for str_id in qs.split(',')]
-
     def get_queryset(self):
-        animals = self.request.query_params.get('animals')
-        queryset = self.queryset
-
-        if animals:
-            animal_ids = self._params_to_ints('animals')
-            queryset = queryset.filter(animals__id__in=animal_ids)
-
-
-        return queryset.filter(
+        return self.queryset.filter(
             user=self.request.user
         )
 
