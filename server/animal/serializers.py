@@ -1,7 +1,6 @@
 from rest_framework import serializers
 
 from core.models import Animal, UserAnimal, User
-from user.serializers import UserAnimalSerializer
 
 
 class AnimalSerializer(serializers.ModelSerializer):

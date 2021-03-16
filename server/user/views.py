@@ -1,10 +1,11 @@
 from django.contrib.auth import get_user_model
 from rest_framework import generics, permissions
 from rest_framework_simplejwt.views import TokenObtainPairView
-
+from rest_framework.response import Response
 
 from .serializers import UserSerializer, LoginSerializer, UserAnimalSerializer
-from core.models import UserAnimal
+from animal.serializers import AnimalSerializer
+from core.models import UserAnimal, Animal
 
 
 class SignUpView(generics.CreateAPIView):
@@ -33,13 +34,19 @@ class UserManager(generics.RetrieveAPIView):
         return self.request.user
 
 
-class UserAnimalRetrieveView(generics.ListAPIView):
+class UserAnimalListView(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
     queryset = UserAnimal.objects.all()
     serializer_class = UserAnimalSerializer
 
     def get_queryset(self):
-        return self.queryset.filter(
-            user=self.request.user
-        )
+        return self.queryset.filter(user=self.request.user)
 
+
+class UserAnimalRetrieve(generics.RetrieveAPIView):
+    permission_classes = [permissions.IsAuthenticated]
+    queryset = UserAnimal.objects.all()
+    serializer_class = UserAnimalSerializer
+
+    def get_queryset(self):
+        return self.queryset.filter(user=self.request.user)

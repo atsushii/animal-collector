@@ -3,6 +3,7 @@ from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 from core.models import Animal, UserAnimal
+from animal.serializers import AnimalSerializer
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -59,3 +60,4 @@ class UserAnimalSerializer(serializers.ModelSerializer):
             'animals'
         )
         read_only_fields = ('id',)
+
