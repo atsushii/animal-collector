@@ -16,27 +16,18 @@ class AnimalDataProcessing:
 
         return soup
 
-    def extract_animal_name_and_description(self, class_id='firstHeading',
-                                            soup=None,
-                                            class_name='mw-parser-output',
-                                            **kwargs):
+    def extract_animal_description(self, soup=None, class_name='mw-parser-output', **kwargs):
         try:
-            animal_name = soup.find(id=class_id).text
             p_tag_list = soup.find('div', class_=class_name)
             description = p_tag_list.findChildren('p', recursive=False)[2].text
         except AttributeError as err:
-            print(err)
+            raise err
 
-        return animal_name, description
+        return description
 
-    def main(self):
+    def scraper(self):
         soup = self.parse_html()
-        animal_name, description = self.extract_animal_name_and_description(soup=soup)
+        description = self.extract_animal_description(soup=soup)
 
-        return animal_name, description
-
-if __name__=='__main__':
-    a = AnimalDataProcessing('tiger')
-    a.main()
-
+        return description
 

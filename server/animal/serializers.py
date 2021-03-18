@@ -1,11 +1,14 @@
 from rest_framework import serializers
 
 from core.models import Animal, UserAnimal, User
+from .wikipedia.api import AnimalDataProcessing
 
 
 class AnimalSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
+        AnimalDataProcessing = AnimalDataProcessing(validated_data['animal_name'])
+
         try:
             obj = Animal.objects.get(animal_name=validated_data['animal_name'])
         except Animal.DoesNotExist:
