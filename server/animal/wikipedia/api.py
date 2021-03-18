@@ -16,7 +16,10 @@ class AnimalDataProcessing:
 
         return soup
 
-    def extract_animal_name_and_description(self, class_id='firstHeading', soup=None, class_name='mw-parser-output'):
+    def extract_animal_name_and_description(self, class_id='firstHeading',
+                                            soup=None,
+                                            class_name='mw-parser-output',
+                                            **kwargs):
         try:
             animal_name = soup.find(id=class_id).text
             p_tag_list = soup.find('div', class_=class_name)
