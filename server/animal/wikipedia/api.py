@@ -1,7 +1,8 @@
 import requests
 from bs4 import BeautifulSoup
 
-class AnimalDataProcessing:
+
+class AnimalDataProcessing(object):
 
     def __init__(self, animal_name):
         self.url = f'https://en.wikipedia.org/wiki/{animal_name}'
