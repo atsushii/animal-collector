@@ -41,18 +41,18 @@ class User(AbstractBaseUser, PermissionsMixin):
 class Animal(models.Model):
     animal_name = models.CharField(max_length=255)
     description = models.TextField()
+    users = models.ManyToManyField(User, through='UserAnimal')
 
     def __str__(self):
-        return self.animal_name
+        return '%s' % self.animal_name
 
 
 class UserAnimal(models.Model):
     user = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        'User',
         on_delete=models.CASCADE,
-        default=3
     )
-    animals = models.ManyToManyField(Animal)
+    animal = models.ForeignKey('Animal', on_delete=models.CASCADE, related_name='animals')
     picture_url = models.URLField(max_length=200)
     x_coordinate = models.FloatField()
     y_coordinate = models.FloatField()

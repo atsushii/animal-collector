@@ -4,6 +4,7 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 from core.models import Animal, UserAnimal
 from animal.serializers import AnimalSerializer
+import time
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -46,11 +47,18 @@ class LoginSerializer(TokenObtainPairSerializer):
 
 
 class UserAnimalSerializer(serializers.ModelSerializer):
-    animals = serializers.PrimaryKeyRelatedField(
-        many=True,
-        queryset=Animal.objects.all()
-    )
+    animals = serializers.SlugRelatedField(many=True, read_only=True,
+                                          slug_field='animal_name')
 
+    def create(self, validated_data):
+        print(validated_data)
+        animal_name = {'animal_name': validated_data.get('animals')[0].animal_name}
+        animal = AnimalSerializer(data=animal_name)
+        animal.is_valid(raise_exception=True)
+        obj = animal.save()
+        print('obj', obj)
+        validated_data['animals'] = obj
+        return UserAnimal.objects.create(**validated_data)
 
     class Meta:
         model = UserAnimal

@@ -31,4 +31,3 @@ class AnimalDataProcessing(object):
         description = self.extract_animal_description(soup=soup)
 
         return description
-
