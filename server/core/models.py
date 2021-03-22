@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser, PermissionsMixin
 from django.utils import timezone
 
+import datetime
+
 from django.conf import settings
 
 
@@ -41,7 +43,6 @@ class User(AbstractBaseUser, PermissionsMixin):
 class Animal(models.Model):
     animal_name = models.CharField(max_length=255)
     description = models.TextField()
-    users = models.ManyToManyField(User, through='UserAnimal')
 
     def __str__(self):
         return '%s' % self.animal_name
@@ -52,8 +53,8 @@ class UserAnimal(models.Model):
         'User',
         on_delete=models.CASCADE,
     )
-    animal = models.ForeignKey('Animal', on_delete=models.CASCADE, related_name='animals')
+    animal = models.ForeignKey('Animal', on_delete=models.CASCADE)
     picture_url = models.URLField(max_length=200)
     x_coordinate = models.FloatField()
     y_coordinate = models.FloatField()
-    created_date = models.DateTimeField(default=timezone.now)
+    created_date = models.DateTimeField(auto_now_add=True, blank=True)

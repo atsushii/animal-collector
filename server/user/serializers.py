@@ -4,8 +4,6 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 from core.models import Animal, UserAnimal
 from animal.serializers import AnimalSerializer
-import time
-
 
 class UserSerializer(serializers.ModelSerializer):
     password1 = serializers.CharField(write_only=True)
@@ -42,22 +40,27 @@ class LoginSerializer(TokenObtainPairSerializer):
         for key, value in user_data.items():
             if key != 'id':
                 token[key] = value
-        print(user_data)
         return token
 
 
+class AnimalField(serializers.StringRelatedField):
+    def to_internal_value(self, data):
+        return data
+
+
 class UserAnimalSerializer(serializers.ModelSerializer):
-    animals = serializers.SlugRelatedField(many=True, read_only=True,
-                                          slug_field='animal_name')
+    animals = AnimalSerializer(many=False, read_only=False)
 
     def create(self, validated_data):
-        print(validated_data)
-        animal_name = {'animal_name': validated_data.get('animals')[0].animal_name}
-        animal = AnimalSerializer(data=animal_name)
+
+        animal_name = validated_data.pop('animals')
+        print('anima', type(dict(animal_name)))
+        animal = AnimalSerializer(data=dict(animal_name))
+        print('aa',animal)
         animal.is_valid(raise_exception=True)
         obj = animal.save()
-        print('obj', obj)
         validated_data['animals'] = obj
+        print(UserAnimal.objects.create(**validated_data))
         return UserAnimal.objects.create(**validated_data)
 
     class Meta:
@@ -67,5 +70,6 @@ class UserAnimalSerializer(serializers.ModelSerializer):
             'y_coordinate', 'created_date',
             'animals'
         )
+        depth = 1
         read_only_fields = ('id',)
 
