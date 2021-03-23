@@ -50,10 +50,10 @@ class Animal(models.Model):
 
 class UserAnimal(models.Model):
     user = models.ForeignKey(
-        'User',
+        User,
         on_delete=models.CASCADE,
     )
-    animal = models.ForeignKey('Animal', on_delete=models.CASCADE)
+    animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
     picture_url = models.URLField(max_length=200)
     x_coordinate = models.FloatField()
     y_coordinate = models.FloatField()

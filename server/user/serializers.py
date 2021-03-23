@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model, authenticate
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
-from core.models import Animal, UserAnimal
+from core.models import UserAnimal
 from animal.serializers import AnimalSerializer
 
 class UserSerializer(serializers.ModelSerializer):
@@ -49,18 +49,17 @@ class AnimalField(serializers.StringRelatedField):
 
 
 class UserAnimalSerializer(serializers.ModelSerializer):
-    animals = AnimalSerializer(many=False, read_only=False)
+    animal = AnimalSerializer(many=False, read_only=False)
 
     def create(self, validated_data):
 
-        animal_name = validated_data.pop('animals')
-        print('anima', type(dict(animal_name)))
-        animal = AnimalSerializer(data=dict(animal_name))
-        print('aa',animal)
-        animal.is_valid(raise_exception=True)
-        obj = animal.save()
-        validated_data['animals'] = obj
-        print(UserAnimal.objects.create(**validated_data))
+        animal_name = validated_data.pop('animal')
+        serializer = AnimalSerializer(data=dict(animal_name))
+        serializer.is_valid(raise_exception=True)
+
+        obj = serializer.save()
+        validated_data['animal'] = obj
+
         return UserAnimal.objects.create(**validated_data)
 
     class Meta:
@@ -68,7 +67,7 @@ class UserAnimalSerializer(serializers.ModelSerializer):
         fields = (
             'id', 'picture_url', 'x_coordinate',
             'y_coordinate', 'created_date',
-            'animals'
+            'animal'
         )
         depth = 1
         read_only_fields = ('id',)

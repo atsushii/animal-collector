@@ -4,7 +4,7 @@
     <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoredPackages">
         <value>
-          <list size="8">
+          <list size="12">
             <item index="0" class="java.lang.String" itemvalue="django" />
             <item index="1" class="java.lang.String" itemvalue="djangorestframework-simplejwt" />
             <item index="2" class="java.lang.String" itemvalue="iniconfig" />
@@ -13,6 +13,10 @@
             <item index="5" class="java.lang.String" itemvalue="psycopg2-binary" />
             <item index="6" class="java.lang.String" itemvalue="pytz" />
             <item index="7" class="java.lang.String" itemvalue="djangorestframework" />
+            <item index="8" class="java.lang.String" itemvalue="beautifulsoup4" />
+            <item index="9" class="java.lang.String" itemvalue="Django" />
+            <item index="10" class="java.lang.String" itemvalue="requests" />
+            <item index="11" class="java.lang.String" itemvalue="Pillow" />
           </list>
         </value>
       </option>
