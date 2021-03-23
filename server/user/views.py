@@ -16,18 +16,27 @@ class LoginView(TokenObtainPairView):
 
 class DeleteUserView(generics.DestroyAPIView):
     permission_classes = [permissions.IsAuthenticated]
+    serializer_class = UserSerializer
     lookup_field = 'id'
     queryset = get_user_model().objects.all()
+    print(queryset)
 
     def delete(self, request, *args, **kwargs):
+
         user_id = request.data.get('id')
+        print('user_id', user_id)
+        print('dddd', request.data)
         response = super().delete(request, *args, **kwargs)
         if response.status_code == 204:
             print(f'delete: {user_id}')
         return response
 
-    def get_queryset(self):
-        return self.queryset.filter(id=self.request.user.id)
+    def get_object(self):
+        queryset = self.filter_queryset(self.get_queryset())
+        obj = queryset.get(pk=self.request.user.id)
+        return obj
+    # def get_queryset(self):
+    #     return self.queryset.filter(user=self.request.user)
 
 class UserAnimalRegister(generics.CreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
