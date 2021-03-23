@@ -1,5 +1,5 @@
 from django.contrib.auth import get_user_model
-from rest_framework import generics, permissions
+from rest_framework import generics, permissions, mixins
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 from .serializers import UserSerializer, LoginSerializer, UserAnimalSerializer
@@ -14,6 +14,16 @@ class SignUpView(generics.CreateAPIView):
 class LoginView(TokenObtainPairView):
     serializer_class = LoginSerializer
 
+class DeleteUserView(generics.DestroyAPIView):
+    lookup_field = 'id'
+    queryset = get_user_model().objects.all()
+
+    def delete(self, request, *args, **kwargs):
+        user_id = request.data.get('id')
+        response = super().delete(request, *args, **kwargs)
+        if response.status_code == 204:
+            print(f'delete: {user_id}')
+        return response
 
 class UserAnimalRegister(generics.CreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
