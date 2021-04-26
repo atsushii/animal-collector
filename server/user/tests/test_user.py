@@ -8,6 +8,7 @@ from rest_framework import status
 CREATE_USER_URL = reverse('user:sign-up')
 LOGIN_URL = reverse('user:log-in')
 DELETE_USER_URL = reverse('user:delete')
+RETRIEVE_USER = reverse('user:me')
 
 
 def create_user(**kwargs):
@@ -100,4 +101,7 @@ class UserApiTests(TestCase):
         self.assertNotIn('access', response.data)
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
 
+    def test_retrieve_by_unauthorized_user(self):
+        response = self.client.get(RETRIEVE_USER)
 
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
