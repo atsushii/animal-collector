@@ -61,3 +61,43 @@ class UserApiTests(TestCase):
         response = self.client.post(CREATE_USER_URL, payload2)
 
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def test_create_token_for_login_user(self):
+        payload = {
+            'email': 'test@gmail.com',
+            'password': 'passWord@1',
+        }
+
+        create_user(**payload)
+
+        response = self.client.post(LOGIN_URL, payload)
+        self.assertIn('access', response.data)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_create_token_for_invalid_credentials(self):
+        payload1 = {
+            'email': 'test@gmail.com',
+            'password': 'passWord@1',
+        }
+
+        payload2 = {
+            'email': 'test@gmail.com',
+            'password': 'wrong',
+        }
+        create_user(**payload1)
+        response = self.client.post(LOGIN_URL, payload2)
+
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertNotIn('access', response.data)
+
+    def test_create_token_missing_field(self):
+        payload = {
+            'email': 'test@gmail.com',
+            'password': '',
+        }
+        response = self.client.post(LOGIN_URL, payload)
+
+        self.assertNotIn('access', response.data)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+
