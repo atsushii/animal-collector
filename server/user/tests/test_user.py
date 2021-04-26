@@ -4,6 +4,7 @@ from django.urls import reverse
 
 from rest_framework.test import APIClient
 from rest_framework import status
+from rest_framework.authtoken.models import Token
 
 CREATE_USER_URL = reverse('user:sign-up')
 LOGIN_URL = reverse('user:log-in')
@@ -15,7 +16,7 @@ def create_user(**kwargs):
     return  get_user_model().objects.create_user(**kwargs)
 
 
-class UserApiTests(TestCase):
+class PublicUserApiTests(TestCase):
 
     def setUp(self):
         self.client = APIClient()
@@ -105,3 +106,29 @@ class UserApiTests(TestCase):
         response = self.client.get(RETRIEVE_USER)
 
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+
+
+class PrivateUserApiTests(TestCase):
+
+    def setUp(self):
+        payload = {
+            'email': 'test@gmail.com',
+            'password': 'Password1',
+        }
+
+        self.user = create_user(**payload)
+        self.client = APIClient()
+
+        response = self.client.post(LOGIN_URL,
+                                    payload)
+
+        self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + response.data['access'])
+
+    def test_retrieve_profile(self):
+        response = self.client.get(RETRIEVE_USER)
+
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data, {
+            'id': 1,
+            'email': self.user.email
+        })
