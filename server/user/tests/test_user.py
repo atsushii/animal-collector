@@ -4,7 +4,6 @@ from django.urls import reverse
 
 from rest_framework.test import APIClient
 from rest_framework import status
-from rest_framework.authtoken.models import Token
 
 CREATE_USER_URL = reverse('user:sign-up')
 LOGIN_URL = reverse('user:log-in')
@@ -128,7 +127,11 @@ class PrivateUserApiTests(TestCase):
         response = self.client.get(RETRIEVE_USER)
 
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data, {
-            'id': 1,
-            'email': self.user.email
-        })
+        self.assertEqual(response.data['email'], self.user.email)
+
+    def test_delete_user(self):
+        response = self.client.delete(DELETE_USER_URL)
+        user = get_user_model().objects.all()
+
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+        self.assertEqual(len(user), 0)
