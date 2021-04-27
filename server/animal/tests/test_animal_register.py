@@ -64,5 +64,3 @@ class RegisterAnimalTests(TestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(response.data['animal_name'], payload['animal_name'])
         self.assertEqual(1, len(animal))
-
-
