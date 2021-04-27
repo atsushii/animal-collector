@@ -25,6 +25,7 @@ class RegisterAnimalTests(TestCase):
         }
         create_user(**payload)
         self.client = APIClient()
+        self.client2 = APIClient()
 
         response = self.client.post(LOGIN_URL, payload)
         self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + response.data['access'])
@@ -39,3 +40,12 @@ class RegisterAnimalTests(TestCase):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(animal.animal_name, payload['animal_name'])
         self.assertTrue(len(animal.description) > 0)
+
+    def test_register_animal_by_unauthorized_user(self):
+        payload = {
+            'animal_name': 'cat'
+        }
+        response = self.client2.post(ANIMAL_REGISTER_URL, payload)
+
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+
