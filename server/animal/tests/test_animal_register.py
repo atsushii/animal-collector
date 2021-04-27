@@ -16,6 +16,10 @@ def create_user(*args, **kwargs):
     return get_user_model().objects.create_user(**kwargs)
 
 
+def register_animal(**kwargs):
+    return Animal.objects.create(**kwargs)
+
+
 class RegisterAnimalTests(TestCase):
 
     def setUp(self):
@@ -48,4 +52,17 @@ class RegisterAnimalTests(TestCase):
         response = self.client2.post(ANIMAL_REGISTER_URL, payload)
 
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+
+    def test_register_exist_animal_by_authorized_user(self):
+        payload = {
+            'animal_name': 'cat'
+        }
+        register_animal(**payload)
+        response = self.client.post(ANIMAL_REGISTER_URL, payload)
+        animal = Animal.objects.all()
+
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(response.data['animal_name'], payload['animal_name'])
+        self.assertEqual(1, len(animal))
+
 
