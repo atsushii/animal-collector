@@ -10,8 +10,7 @@ from core.models import Animal
 
 LOGIN_URL = reverse('user:log-in')
 REGISTER_ANIMAL = reverse('user:register-animal')
-ANIMAL_REGISTER_URL = reverse('animal:animal-register')
-RETRIEVE_ANIMAL_URL = reverse('animal:retrieve-animal')
+RETRIEVE_ANIMAL_URL = reverse('user:retrieve-animal', args=[2])
 
 
 def create_user(**kwargs):
@@ -56,7 +55,7 @@ class UserAnimalTests(TestCase):
             'y_coordinate': 1.2,
             'animal': {'animal_name': 'cat'}
         }
-        response = self.unauthorized_client.post(REGISTER_ANIMAL, payload)
+        response = self.unauthorized_client.post(REGISTER_ANIMAL, payload, format='json')
 
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
@@ -67,8 +66,12 @@ class UserAnimalTests(TestCase):
             'y_coordinate': 1.2,
             'animal': {'animal_name': 'cat'}
         }
-        response = self.client.post(REGISTER_ANIMAL, payload, format='json')
-        print(response.data)
-        animal = self.client.get(f'{REGISTER_ANIMAL}/{response.id}')
-        print(animal)
+        self.client.post(REGISTER_ANIMAL, payload, format='json')
+        animal = self.client.get(RETRIEVE_ANIMAL_URL)
 
+        self.assertEqual(animal.status_code, status.HTTP_200_OK)
+        self.assertEqual(animal.data['id'], 2)
+        self.assertEqual(animal.data['picture_url'], payload['picture_url'])
+        self.assertEqual(animal.data['x_coordinate'], payload['x_coordinate'])
+        self.assertEqual(animal.data['y_coordinate'], payload['y_coordinate'])
+        self.assertEqual(animal.data['animal']['animal_name'], payload['animal']['animal_name'])
