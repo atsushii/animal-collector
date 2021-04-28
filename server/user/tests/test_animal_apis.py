@@ -65,11 +65,7 @@ class UserAnimalTests(TestCase):
         self.client.post(REGISTER_ANIMAL, self.animal_payload, format='json')
 
         animals = self.client.get(LIST_ANIMAL_URL)
-        print(animals.status_code)
 
         self.assertEqual(animals.status_code, status.HTTP_200_OK)
         self.assertEqual(len(animals.data), 2)
-        self.assertContains(animals.data, 'cat')
-        self.assertContains(animals.data, 'dog')
-
-
+        self.assertTrue(i['animal']['animal_name'] in ['cat', 'dog'] for i in animals.data)
