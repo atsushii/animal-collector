@@ -5,73 +5,71 @@ from django.urls import reverse
 from rest_framework.test import APIClient
 from rest_framework import status
 
-from core.models import Animal
-
 
 LOGIN_URL = reverse('user:log-in')
 REGISTER_ANIMAL = reverse('user:register-animal')
-RETRIEVE_ANIMAL_URL = reverse('user:retrieve-animal', args=[2])
+LIST_ANIMAL_URL = reverse('user:list-animals')
 
 
 def create_user(**kwargs):
     return get_user_model().objects.create_user(**kwargs)
 
 
-def register_animal(**kwargs):
-    return Animal.objects.create(**kwargs)
-
-
 class UserAnimalTests(TestCase):
 
     def setUp(self):
-        payload = {
+        user_payload = {
             'email': 'test@gmail.com',
             'password': 'password'
         }
 
-        create_user(**payload)
-        self.client = APIClient()
-        self.unauthorized_client = APIClient()
-        response = self.client.post(LOGIN_URL, payload)
-        self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + response.data['access'])
-
-        self.animal_obj = register_animal(animal_name='cat')
-
-    def test_register_animal_by_authorized_user(self):
-        payload = {
+        self.animal_payload = {
             'picture_url': 'http://test.com',
             'x_coordinate': 1.2,
             'y_coordinate': 1.2,
             'animal': {'animal_name': 'cat'}
         }
-        response = self.client.post(REGISTER_ANIMAL, payload, format='json')
+
+        create_user(**user_payload)
+        self.client = APIClient()
+        self.unauthorized_client = APIClient()
+        response = self.client.post(LOGIN_URL, user_payload)
+        self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + response.data['access'])
+
+    def test_register_animal_by_authorized_user(self):
+        response = self.client.post(REGISTER_ANIMAL, self.animal_payload, format='json')
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
     def test_register_animal_by_unauthorized_user(self):
-        payload = {
-            'picture_url': 'http://test.com',
-            'x_coordinate': 1.2,
-            'y_coordinate': 1.2,
-            'animal': {'animal_name': 'cat'}
-        }
-        response = self.unauthorized_client.post(REGISTER_ANIMAL, payload, format='json')
+        response = self.unauthorized_client.post(REGISTER_ANIMAL, self.animal_payload, format='json')
 
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
     def test_retrieve_animal_by_authorized_user(self):
-        payload = {
-            'picture_url': 'http://test.com',
-            'x_coordinate': 1.2,
-            'y_coordinate': 1.2,
-            'animal': {'animal_name': 'cat'}
-        }
-        self.client.post(REGISTER_ANIMAL, payload, format='json')
+        response = self.client.post(REGISTER_ANIMAL, self.animal_payload, format='json')
+        RETRIEVE_ANIMAL_URL = reverse('user:retrieve-animal', args=[response.data['id']])
+
         animal = self.client.get(RETRIEVE_ANIMAL_URL)
 
         self.assertEqual(animal.status_code, status.HTTP_200_OK)
-        self.assertEqual(animal.data['id'], 2)
-        self.assertEqual(animal.data['picture_url'], payload['picture_url'])
-        self.assertEqual(animal.data['x_coordinate'], payload['x_coordinate'])
-        self.assertEqual(animal.data['y_coordinate'], payload['y_coordinate'])
-        self.assertEqual(animal.data['animal']['animal_name'], payload['animal']['animal_name'])
+        self.assertEqual(animal.data['id'], response.data['id'])
+        self.assertEqual(animal.data['picture_url'], self.animal_payload['picture_url'])
+        self.assertEqual(animal.data['x_coordinate'], self.animal_payload['x_coordinate'])
+        self.assertEqual(animal.data['y_coordinate'], self.animal_payload['y_coordinate'])
+        self.assertEqual(animal.data['animal']['animal_name'], self.animal_payload['animal']['animal_name'])
+
+    def test_list_stored_animals_by_authorized_user(self):
+        self.client.post(REGISTER_ANIMAL, self.animal_payload, format='json')
+        self.animal_payload['animal']['animal_name'] = 'dog'
+        self.client.post(REGISTER_ANIMAL, self.animal_payload, format='json')
+
+        animals = self.client.get(LIST_ANIMAL_URL)
+        print(animals.status_code)
+
+        self.assertEqual(animals.status_code, status.HTTP_200_OK)
+        self.assertEqual(len(animals.data), 2)
+        self.assertContains(animals.data, 'cat')
+        self.assertContains(animals.data, 'dog')
+
+
