@@ -11,6 +11,7 @@ from core.models import Animal
 LOGIN_URL = reverse('user:log-in')
 REGISTER_ANIMAL = reverse('user:register-animal')
 ANIMAL_REGISTER_URL = reverse('animal:animal-register')
+RETRIEVE_ANIMAL_URL = reverse('animal:retrieve-animal')
 
 
 def create_user(**kwargs):
@@ -31,6 +32,7 @@ class UserAnimalTests(TestCase):
 
         create_user(**payload)
         self.client = APIClient()
+        self.unauthorized_client = APIClient()
         response = self.client.post(LOGIN_URL, payload)
         self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + response.data['access'])
 
@@ -46,3 +48,27 @@ class UserAnimalTests(TestCase):
         response = self.client.post(REGISTER_ANIMAL, payload, format='json')
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+    def test_register_animal_by_unauthorized_user(self):
+        payload = {
+            'picture_url': 'http://test.com',
+            'x_coordinate': 1.2,
+            'y_coordinate': 1.2,
+            'animal': {'animal_name': 'cat'}
+        }
+        response = self.unauthorized_client.post(REGISTER_ANIMAL, payload)
+
+        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
+
+    def test_retrieve_animal_by_authorized_user(self):
+        payload = {
+            'picture_url': 'http://test.com',
+            'x_coordinate': 1.2,
+            'y_coordinate': 1.2,
+            'animal': {'animal_name': 'cat'}
+        }
+        response = self.client.post(REGISTER_ANIMAL, payload, format='json')
+        print(response.data)
+        animal = self.client.get(f'{REGISTER_ANIMAL}/{response.id}')
+        print(animal)
+
