@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
 const useSignUpForm = (callback) => {
-    const [inputs, setInputs] = useState();
+    // initialize state
+    const [inputs, setInputs] = useState({});
 
     const handleSubmit = (event) => {
         if (event) {
@@ -13,7 +14,7 @@ const useSignUpForm = (callback) => {
 
     const handleInputChange = (event) => {
         event.persist();
-        setInputs(inputs => ({...inputs, [event.trget.name]:
+        setInputs(inputs => ({...inputs, [event.target.name]:
         event.target.value}));
     }
     return {
