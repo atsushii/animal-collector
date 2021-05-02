@@ -50,7 +50,7 @@ class UserAnimal(models.Model):
         on_delete=models.CASCADE,
     )
     animal = models.ForeignKey(Animal, on_delete=models.CASCADE)
-    picture_url = models.URLField(max_length=200)
+    file = models.FileField()
     x_coordinate = models.FloatField()
     y_coordinate = models.FloatField()
     created_date = models.DateTimeField(auto_now_add=True, blank=True)

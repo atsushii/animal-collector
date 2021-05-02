@@ -17,6 +17,7 @@ class AnimalDataProcessing(object):
 
         return soup
 
+
     def extract_animal_description(self, soup=None, class_name='mw-parser-output', **kwargs):
         try:
             p_tag_list = soup.find('div', class_=class_name)

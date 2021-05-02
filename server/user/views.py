@@ -32,6 +32,7 @@ class DeleteUserView(generics.DestroyAPIView):
         obj = queryset.get(pk=self.request.user.id)
         return obj
 
+
 class UserAnimalRegister(generics.CreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
     queryset = UserAnimal.objects.all()
@@ -43,7 +44,7 @@ class UserAnimalRegister(generics.CreateAPIView):
 
 class UserManager(generics.RetrieveAPIView):
     permission_classes = [permissions.IsAuthenticated]
-    serializer_class =UserSerializer
+    serializer_class = UserSerializer
 
     def get_object(self):
         return self.request.user

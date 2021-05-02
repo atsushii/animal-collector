@@ -52,6 +52,7 @@ class UserAnimalSerializer(serializers.ModelSerializer):
     animal = AnimalSerializer(many=False, read_only=False)
 
     def create(self, validated_data):
+        print('data-----------', validated_data)
 
         animal_name = validated_data.pop('animal')
         serializer = AnimalSerializer(data=dict(animal_name))
@@ -65,7 +66,7 @@ class UserAnimalSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserAnimal
         fields = (
-            'id', 'picture_url', 'x_coordinate',
+            'id', 'file', 'x_coordinate',
             'y_coordinate', 'created_date',
             'animal'
         )
