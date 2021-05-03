@@ -54,6 +54,12 @@ class UserAnimalRegister(viewsets.ModelViewSet):
     def upload_animal_image(self, request, pk=None):
         #todo
         # get userAnimal object
+        user_animal = self.get_object()
+        serializer = self.get_serializer(
+            user_animal,
+            request.data
+        )
+        serializer.is_valid()
         # get serializer to handle image
         # store upladed to S3
         # get url
