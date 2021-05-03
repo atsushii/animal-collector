@@ -44,14 +44,14 @@ class UserAnimalRegister(viewsets.ModelViewSet):
         serializer.save(user=self.request.user)
 
     def get_serializer(self, *args, **kwargs):
-        if self.action == 'post':
+        if self.action == 'create':
             return self.serializer_class
         elif self.action == 'upload-image':
             return self.serializer_class
         return self.serializer_class
 
-    @action(method=['POST'], url_path='upload-image')
-    def upload_animal_image(self, request):
+    @action(method=['POST'], detail=True, url_path='upload-image')
+    def upload_animal_image(self, request, pk=None):
         #todo
         # get userAnimal object
         # get serializer to handle image
