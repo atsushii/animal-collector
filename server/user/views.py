@@ -14,6 +14,7 @@ class SignUpView(generics.CreateAPIView):
 class LoginView(TokenObtainPairView):
     serializer_class = LoginSerializer
 
+
 class DeleteUserView(generics.DestroyAPIView):
     permission_classes = [permissions.IsAuthenticated]
     serializer_class = UserSerializer
@@ -40,6 +41,16 @@ class UserAnimalRegister(generics.CreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
+
+    def upload_animal_image(self, request):
+        #todo
+        # get userAnimal object
+        # get serializer to handle image
+        # store upladed to S3
+        # get url
+        # Store url, x cordi, y cordi, animal name
+        return
+
 
 
 class UserManager(generics.RetrieveAPIView):
