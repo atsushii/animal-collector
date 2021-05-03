@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
-from rest_framework import generics, permissions, mixins
+from rest_framework import generics, permissions, viewsets
+from rest_framework.decorators import action
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 from .serializers import UserSerializer, LoginSerializer, UserAnimalSerializer
@@ -34,7 +35,7 @@ class DeleteUserView(generics.DestroyAPIView):
         return obj
 
 
-class UserAnimalRegister(generics.CreateAPIView):
+class UserAnimalRegister(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     queryset = UserAnimal.objects.all()
     serializer_class = UserAnimalSerializer
@@ -42,6 +43,14 @@ class UserAnimalRegister(generics.CreateAPIView):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
+    def get_serializer(self, *args, **kwargs):
+        if self.action == 'post':
+            return self.serializer_class
+        elif self.action == 'upload-image':
+            return self.serializer_class
+        return self.serializer_class
+
+    @action(method=['POST'], url_path='upload-image')
     def upload_animal_image(self, request):
         #todo
         # get userAnimal object
@@ -50,7 +59,6 @@ class UserAnimalRegister(generics.CreateAPIView):
         # get url
         # Store url, x cordi, y cordi, animal name
         return
-
 
 
 class UserManager(generics.RetrieveAPIView):
