@@ -1,9 +1,13 @@
 from django.contrib.auth import get_user_model
-from rest_framework import generics, permissions, viewsets
+from rest_framework import generics, permissions, mixins, views
 from rest_framework.decorators import action
 from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework.parsers import MultiPartParser
 
-from .serializers import UserSerializer, LoginSerializer, UserAnimalSerializer
+from .serializers import UserSerializer, \
+                         LoginSerializer,\
+                         UserAnimalSerializer, \
+                         UserAnimalImageSerializer
 from core.models import UserAnimal
 
 
@@ -35,36 +39,43 @@ class DeleteUserView(generics.DestroyAPIView):
         return obj
 
 
-class UserAnimalRegister(viewsets.ModelViewSet):
+class UserAnimalRegister(generics.GenericAPIView,
+                         mixins.CreateModelMixin):
+
     permission_classes = [permissions.IsAuthenticated]
     queryset = UserAnimal.objects.all()
     serializer_class = UserAnimalSerializer
+    parser_classes = ([MultiPartParser])
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
-    def get_serializer(self, *args, **kwargs):
-        if self.action == 'create':
-            return self.serializer_class
-        elif self.action == 'upload-image':
-            return self.serializer_class
-        return self.serializer_class
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
 
-    @action(method=['POST'], detail=True, url_path='upload-image')
-    def upload_animal_image(self, request, pk=None):
-        #todo
-        # get userAnimal object
-        user_animal = self.get_object()
-        serializer = self.get_serializer(
-            user_animal,
-            request.data
-        )
-        serializer.is_valid()
-        # get serializer to handle image
-        # store upladed to S3
-        # get url
-        # Store url, x cordi, y cordi, animal name
-        return
+    # def get_serializer(self, *args, **kwargs):
+    #     if self.action == 'create':
+    #         return self.serializer_class
+    #     elif self.action == 'upload-image':
+    #         return UserAnimalImageSerializer
+    #     return self.serializer_class
+    #
+    # @action(methods=['post'], detail=True, url_path='upload-image')
+    # def upload_animal_image(self, request, pk=None):
+    #     #todo
+    #     # get userAnimal object
+    #     user_animal = self.get_object()
+    #     serializer = self.get_serializer(
+    #         user_animal,
+    #         request.data
+    #     )
+    #     if serializer.is_valid():
+    #         serializer.save()
+    #     # get serializer to handle image
+    #     # store upladed to S3
+    #     # get url
+    #     # Store url, x cordi, y cordi, animal name
+    #     return
 
 
 class UserManager(generics.RetrieveAPIView):

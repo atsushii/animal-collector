@@ -4,6 +4,15 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 from core.models import UserAnimal
 from animal.serializers import AnimalSerializer
+import logging
+import sys
+
+root = logging.getLogger()
+root.setLevel(logging.DEBUG)
+
+handler = logging.StreamHandler(sys.stdout)
+handler.setLevel(logging.DEBUG)
+root.addHandler(handler)
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -53,7 +62,6 @@ class UserAnimalSerializer(serializers.ModelSerializer):
     animal = AnimalSerializer(many=False, read_only=False)
 
     def create(self, validated_data):
-        print('data-----------', validated_data)
 
         animal_name = validated_data.pop('animal')
         serializer = AnimalSerializer(data=dict(animal_name))
@@ -74,3 +82,12 @@ class UserAnimalSerializer(serializers.ModelSerializer):
         depth = 1
         read_only_fields = ('id',)
 
+
+class UserAnimalImageSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = UserAnimal
+        fields = (
+            'id', 'file'
+        )
+        read_only_fields = ['id']
