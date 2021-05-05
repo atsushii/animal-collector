@@ -6,9 +6,9 @@ const useSignUpForm = (callback) => {
     const [inputs, setInputs] = useState({});
 
     async function registerUser() {
-        console.log(inputs)
+        const url = 'http://localhost:8003/api/user/sign-up/'
         await axios.post(
-            'http://localhost:8003/api/user/sign-up/',
+            url,
             inputs
         )
         .then((response) => {
