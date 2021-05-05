@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const useSignUpForm = (callback) => {
+const useSignUpForm = () => {
     // initialize state
     const [inputs, setInputs] = useState({});
 
