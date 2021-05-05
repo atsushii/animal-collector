@@ -1,41 +1,42 @@
-import React, { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
-const useSignUpForm = () => {
-    // initialize state
+const useLoginForm = () => {
     const [inputs, setInputs] = useState({});
 
-    async function registerUser() {
-        const url = 'http://localhost:8003/api/user/sign-up/'
+    async function loginUser() {
+        const url = "http://localhost:8003/api/user/log-in/"
         console.log(inputs)
         await axios.post(
             url,
             inputs
         )
         .then((response) => {
-            console.log(response);
+            console.log(response)
         }, (error) => {
-            console.log(error)
+            console.log(error);
         });
     }
 
     useEffect(() => {
-        registerUser();
-    }, [])
+        loginUser();
+    }, []) 
 
     const handleSubmit = (event) => {
         if (event) {
-            // prevent default behavior such as refresh page
             event.preventDefault();
-            registerUser()
+            loginUser();
         }
     }
 
     const handleInputChange = (event) => {
         event.persist();
-        setInputs(inputs => ({...inputs, [event.target.name]:
-        event.target.value}));
+        setInputs(inputs =>(
+            {...inputs, 
+            [event.target.name]:event.target.value
+        }));
     }
+
     return {
         handleSubmit,
         handleInputChange,
@@ -43,4 +44,4 @@ const useSignUpForm = () => {
     }
 }
 
-export default useSignUpForm;
+export default useLoginForm;
