@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import Routes from "./router/Routes";
+import { useRoutes } from "hookrouter";
 
 const App = () => {
+    const router = useRoutes(Routes);
     return (
-        <h1>
-            Hello
-        </h1>
-    );
+        <div>
+            <a href="/signup">Sign Up</a>
+            <a href="/login">LogIn</a>            
+            {router}
+        </div>
+    )
 };
 
 export default App;
