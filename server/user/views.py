@@ -1,6 +1,5 @@
 from django.contrib.auth import get_user_model
 from rest_framework import generics, permissions, mixins, views
-from rest_framework.decorators import action
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.parsers import MultiPartParser
 
