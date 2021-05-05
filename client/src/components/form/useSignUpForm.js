@@ -13,6 +13,7 @@ const useSignUpForm = () => {
         )
         .then((response) => {
             console.log(response);
+
         }, (error) => {
             console.log(error)
         });
