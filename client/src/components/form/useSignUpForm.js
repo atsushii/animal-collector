@@ -7,7 +7,6 @@ const useSignUpForm = () => {
 
     async function registerUser() {
         const url = 'http://localhost:8003/api/user/sign-up/'
-        console.log(inputs)
         await axios.post(
             url,
             inputs

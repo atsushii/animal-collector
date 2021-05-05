@@ -6,7 +6,6 @@ const useLoginForm = () => {
 
     async function loginUser() {
         const url = "http://localhost:8003/api/user/log-in/"
-        console.log(inputs)
         await axios.post(
             url,
             inputs
