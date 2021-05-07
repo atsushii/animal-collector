@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+
 const useLoginForm = () => {
     const [inputs, setInputs] = useState({});
 
@@ -14,7 +15,10 @@ const useLoginForm = () => {
             if (response.data.access) {
                 localStorage.setItem("user", JSON.stringify(response.data))
             }
-            console.log(response)
+            console.log("response")
+            // todo
+            // redirect tp dashboard after success login
+            // share user data beteen login and dhashboard
         }, (error) => {
             console.log(error);
         });

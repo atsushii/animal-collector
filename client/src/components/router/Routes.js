@@ -9,4 +9,5 @@ const routes = {
     "/dashboard": () => <DashBoard />
 };
 
+
 export default routes;
