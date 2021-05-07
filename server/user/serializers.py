@@ -81,13 +81,3 @@ class UserAnimalSerializer(serializers.ModelSerializer):
         )
         depth = 1
         read_only_fields = ('id',)
-
-
-class UserAnimalImageSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = UserAnimal
-        fields = (
-            'id', 'file'
-        )
-        read_only_fields = ['id']

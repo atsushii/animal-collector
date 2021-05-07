@@ -5,8 +5,7 @@ from rest_framework.parsers import MultiPartParser
 
 from .serializers import UserSerializer, \
                          LoginSerializer,\
-                         UserAnimalSerializer, \
-                         UserAnimalImageSerializer
+                         UserAnimalSerializer
 from core.models import UserAnimal
 
 
