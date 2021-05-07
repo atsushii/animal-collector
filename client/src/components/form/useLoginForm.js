@@ -14,6 +14,7 @@ const useLoginForm = () => {
             if (response.data.access) {
                 localStorage.setItem("user", JSON.stringify(response.data))
             }
+            console.log(response)
         }, (error) => {
             console.log(error);
         });

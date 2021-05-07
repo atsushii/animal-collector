@@ -7,6 +7,7 @@ const App = () => {
         <div>
             <a href="/signup">Sign Up</a>
             <a href="/login">LogIn</a>            
+            <a href="/dashboard">DashBoard</a>
             {router}
         </div>
     )
