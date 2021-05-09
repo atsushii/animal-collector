@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react"
 import axios from "axios";
-import useLoginFrom from "./useLoginForm";
 
 const Login = ({ onAuthenticate }) => {
     const [email, setEmail] = useState("");
@@ -11,21 +10,24 @@ const Login = ({ onAuthenticate }) => {
         const url = "http://localhost:8003/api/user/log-in/"
         await axios.post(
             url,
-            email,
-            password
+            {
+                email,
+                password
+            }
         )
         .then((response) => {
-            return response.data
+            const {user, accessToken } = response.data
+            console.log("here");
+            onAuthenticate(user, accessToken);
         }, (error) => {
             console.log(error);
         });
     }
 
     // Call API
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        const { user, accessToken } = loginUser();
-        onAuthenticate(user, accessToken);
+        loginUser();
     }
  
     return (

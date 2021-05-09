@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import axios from "axios";
 
 
 const Signup = ({ onAuthenticate }) => {
@@ -18,7 +19,7 @@ const Signup = ({ onAuthenticate }) => {
         .then((response) => {
             // Todo
             // Return access token from server when user signup
-            const { use, accessTokenr } = response.data();
+            const { user, accessToken } = response.data();
             onAuthenticate(user, accessToken)
 
         }, (error) => {
@@ -62,7 +63,7 @@ const Signup = ({ onAuthenticate }) => {
                     <input 
                         type="password" 
                         value={ password2 } 
-                        onChange={(e) => setPasssword2(e.currentTarget.value)}
+                        onChange={(e) => setPassword2(e.currentTarget.value)}
                         required />
                 </label>
             </fieldset>

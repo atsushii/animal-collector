@@ -19,9 +19,8 @@ export const AuthenticationForm = () => {
         }
     }, []);
 
-    const handleAuth = (user, token) => {
+    const handleAuth = ({ user, token }) => {
         logIn(user, token)
-
         history.replace(location.state?.form || "/")
     }
 
