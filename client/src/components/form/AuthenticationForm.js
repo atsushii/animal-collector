@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useHistory, useLocation } from "react-router";
+import { useLoginSession } from "../../services/LoginSession";
 
 import { Signup } from "./Signup";
 import { Login } from "./Login";
@@ -9,7 +10,9 @@ export const AuthenticationForm = () => {
     const location = useLocation();
 
     const [hasAccount, setHasAccount] = useState(false);
+    const { logIn, user } = useLoginSession();
     console.log("location", location.state)
+
     useEffect(() => {
         if (user) {
             history.replace(location.state?.from || '/')
@@ -17,7 +20,7 @@ export const AuthenticationForm = () => {
     }, []);
 
     const handleAuth = (user, token) => {
-        login(user, token)
+        logIn(user, token)
 
         history.replace(location.state?.form || "/")
     }
