@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react"
 import axios from "axios";
 
-const Login = ({ onAuthenticate }) => {
+export const Login = ({ onAuthenticate }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -58,5 +58,3 @@ const Login = ({ onAuthenticate }) => {
         </form>
     );
 }
-
-export default Login;

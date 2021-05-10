@@ -28,10 +28,8 @@ export const LoginSessionProvider = ({ children }) => {
     };
 
     return (
-        <LoginSessionContext.provider value={provider}>
+        <LoginSessionContext.Provider value={provider}>
             {children}
-        </LoginSessionContext.provider>
-    )
-
-
-}
+        </LoginSessionContext.Provider>
+    );
+};

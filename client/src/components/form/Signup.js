@@ -3,7 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 
 
-const Signup = ({ onAuthenticate }) => {
+export const Signup = ({ onAuthenticate }) => {
     const [email, setEmail] = useState("");
     const [password1, setPasssword1] = useState("");
     const [password2, setPassword2] = useState("");
@@ -70,6 +70,4 @@ const Signup = ({ onAuthenticate }) => {
             <button type="submit">Sign Up</button>
         </form>
     );
-}
-
-export default Signup;
+};
