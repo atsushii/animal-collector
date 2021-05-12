@@ -12,7 +12,7 @@ export const Routes = () => {
             <LoginSessionProvider>
                 <BrowserRouter>
                     <Switch>
-                        <Route path="/login" exact>
+                    <Route path="/login" exact>
                             <AuthenticationPage />
                         </Route>
                         <ProtectRoute path="/" exact>
