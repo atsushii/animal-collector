@@ -16,11 +16,8 @@ export const Login = ({ onAuthenticate }) => {
             }
         )
         .then((response) => {
-            const {user, accessToken } = response.data
-            console.log("success", response);
-            console.log(user);
-            console.log(accessToken);
-            onAuthenticate(user, accessToken);
+            const { access } = response.data
+            onAuthenticate(email, access);
         }, (error) => {
             console.log(error);
         });
