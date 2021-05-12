@@ -18,7 +18,7 @@ export const AuthenticationForm = () => {
         }
     }, []);
 
-    const handleAuth = ({ user, token }) => {
+    const handleAuth = ( user, token ) => {
         logIn(user, token)
         // use .replace incstead of .push to avoid return login page
         history.replace(location.state?.form || "/")
