@@ -11,7 +11,6 @@ export const AuthenticationForm = () => {
 
     const [hasAccount, setHasAccount] = useState(false);
     const { logIn, user } = useLoginSession();
-    console.log("location", location.state)
 
     useEffect(() => {
         if (user) {

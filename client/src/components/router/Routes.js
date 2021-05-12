@@ -6,8 +6,6 @@ import { LoginSessionProvider, useLoginSession } from "../../services/LoginSessi
 import { AuthenticationPage } from "../form/AuthenticationPage"
 import { DashBoard } from "../mainpage/DashBoard"
 
-import Signup from "../form/Signup";
-import Login from "../form/Login";
 
 export const Routes = () => {
     return (        

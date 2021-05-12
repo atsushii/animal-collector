@@ -17,7 +17,9 @@ export const Login = ({ onAuthenticate }) => {
         )
         .then((response) => {
             const {user, accessToken } = response.data
-            console.log("here");
+            console.log("success", response);
+            console.log(user);
+            console.log(accessToken);
             onAuthenticate(user, accessToken);
         }, (error) => {
             console.log(error);

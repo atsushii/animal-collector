@@ -1,5 +1,4 @@
 import { Routes } from "./router/Routes";
-import { useRoutes } from "hookrouter";
 
 const App = () => {
     return (
